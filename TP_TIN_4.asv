@@ -21,20 +21,39 @@ imshow(img2)
 subplot(122);
 
 
+img2_e = img2;
+for i=1:6
+    img2_e = imerode(img2_e, strel('square', 4));
+end
 
-img2_e = imerode(img2, strel('square', 4));
-img2_e = imerode(img2_e, strel('square', 4));
-img2_e = imerode(img2_e, strel('square', 4));
-img2_e = imerode(img2_e, strel('square', 4));
-img2_e = imerode(img2_e, strel('square', 4));
-img2_e = imerode(img2_e, strel('square', 4));
-img2_e = imdilate(img2_e, strel('square',5));
-img2_e = imdilate(img2_e, strel('square', 5));
-img2_e = imdilate(img2_e, strel('square', 5));
-img2_e = imdilate(img2_e, strel('square', 5));
-img2_e = imdilate(img2_e, strel('square', 5));
-imshow(img2_e)
+
+for i=1:5
+    img2_e = imdilate(img2_e, strel('square', 4));
+end
+
+
+imshow(double(imbinarize(img2_e)))
 %% 
 img3 = imbinarize(imread("lame0001.jpg"));
 figure(3);
+subplot(121);
 imshow(img3)
+title("image originale");
+% for i=1:10
+    img3 = imopen(img3, strel('square', 3));
+    img3 = imopen(img3, strel('square', 3));
+    img3 = imopen(img3, strel('square', 3));
+    img3 = imclose(img3, strel('square', 3));
+    img3 = imclose(img3, strel('square', 3));
+    img3 = imclose(img3, strel('square', 3));
+    img3 = imclose(img3, strel('square', 3));
+% end
+
+
+subplot(122);
+imshow(img3)
+title("image modifiee");
+
+
+
+
