@@ -40,9 +40,10 @@ subplot(121);
 imshow(img3)
 title("image originale");
 % for i=1:10
-    img3 = imopen(img3, strel('square', 4));
-    img3 = imopen(img3, strel('square', 3));img3 = imopen(img3, strel('square', 3));
     img3 = imopen(img3, strel('square', 3));
+    img3 = imopen(img3, strel('square', 3));
+%     img3 = imopen(img3, strel('square', 3));
+%     img3 = imopen(img3, strel('square', 3));
     img3 = imclose(img3, strel('square', 5));
     img3 = imclose(img3, strel('square', 3));
     img3 = imclose(img3, strel('square', 3));
